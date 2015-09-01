@@ -1,17 +1,3 @@
-def double_guess
-  array.include?(input)
-end
-
-def toolow_toohigh
-  if input < comp_guess && num_guesses < 5
-    puts "Your guess is too low. Try again."
-  elsif input > comp_guess && num_guesses < 5
-    puts "Your guess is too high. Try again."
-  else input == comp_guess && num_guesses < 5
-    puts "BIG Winner! Your guessing game is STRONG!"
-    break
-end
-
 
 input = 0
 num_guesses = 0
@@ -24,13 +10,19 @@ puts "I'm thinking of a number between 1 - 100. Try and guess the number. Double
 until num_guesses > 5
   input = gets.chomp.to_i
 
-  if double_guess
+  if array.include?(input)
     puts "Deja vu...you have already selected that number."
     puts "Try again."
   elsif input == 0
     puts "Does not compute. Numbers only please. Start over."
     break
-  elsif toolow_toohigh
+  elsif input < comp_guess && num_guesses < 5
+    puts "Your guess is too low. Try again."
+  elsif input > comp_guess && num_guesses < 5
+    puts "Your guess is too high. Try again."
+  elsif input == comp_guess && num_guesses < 5
+    puts "BIG Winner! Your guessing game is STRONG!"
+    break
   else
     puts "Sorry you lost..."
     break
