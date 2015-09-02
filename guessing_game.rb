@@ -1,3 +1,10 @@
+def same_guess(input, array)
+  array.include?(input)
+end
+
+def does_not_compute(input)
+  input == 0
+end
 
 input = 0
 num_guesses = 0
@@ -10,11 +17,11 @@ puts "I'm thinking of a number between 1 - 100. Try and guess the number. Double
 until num_guesses > 5
   input = gets.chomp.to_i
 
-  if array.include?(input)
+  if same_guess(input, array)
     puts "Deja vu...you have already selected that number."
     puts "Try again."
-  elsif input == 0
-    puts "Does not compute. Numbers only please. Start over."
+  elsif does_not_compute(input)
+    puts "This is why you can't have nice things. If you can't play by the rules you must start over."
     break
   elsif input < comp_guess && num_guesses < 5
     puts "Your guess is too low. Try again."
@@ -24,7 +31,7 @@ until num_guesses > 5
     puts "BIG Winner! Your guessing game is STRONG!"
     break
   else
-    puts "Sorry you lost..."
+    puts "Whoa cowboy, remember only 5 guesses. Time to ride off into the Game Over sunset."
     break
   end
 
